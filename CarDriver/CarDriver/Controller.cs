@@ -12,28 +12,30 @@ namespace CarDriver
         {
             if (Console.KeyAvailable)
             {
-                if (Console.ReadKey().Key == ConsoleKey.LeftArrow)
+                var pressedKey = Console.ReadKey();
+                while (Console.KeyAvailable) Console.ReadKey();
+                if (pressedKey.Key == ConsoleKey.LeftArrow)
                 {
                     if (playerCar.Col > 0)
                     {
                         playerCar.Col--;
                     }
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.RightArrow)
+                else if (pressedKey.Key == ConsoleKey.RightArrow)
                 {
                     if (playerCar.Col < (Console.WindowWidth / 2) - 2)
                     {
                         playerCar.Col++;
                     }
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.UpArrow)
+                else if (pressedKey.Key == ConsoleKey.UpArrow)
                 {
                     if (playerCar.Row > 0)
                     {
                         playerCar.Row--;
                     }
                 }
-                else if (Console.ReadKey().Key == ConsoleKey.DownArrow)
+                else if (pressedKey.Key == ConsoleKey.DownArrow)
                 {
                     if (playerCar.Row < Console.WindowHeight - 1)
                     {
