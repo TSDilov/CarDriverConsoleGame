@@ -11,6 +11,7 @@
         public void Play()
         {
             var playerCar = new Car(Console.WindowHeight - 1, 7, ConsoleColor.Red, '@');
+            var enemyCars = new List<Car>();
 
             while (true)
             {
@@ -19,8 +20,11 @@
                 this.viewEngine.PrintTheWall();
                 this.viewEngine.PrintSymbol(playerCar.Row, playerCar.Col, playerCar.Symbol, playerCar.Color);
                 playerCar = Controller.MovingTheCar(playerCar);
-
-                Thread.Sleep(50);
+                enemyCars = Controller.GenerateEnemyCars(enemyCars);
+                this.viewEngine.PrintEnemyCars(enemyCars);
+                var newList = Controller.MoveEnemyCars(enemyCars);
+                enemyCars = newList;
+                Thread.Sleep(500);
             }
         }       
 

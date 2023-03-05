@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,30 @@ namespace CarDriver
             }
 
             return playerCar;
+        }
+
+        public static List<Car> GenerateEnemyCars(List<Car> enemyCars)
+        {
+            var randomGenerator = new Random();
+            var newCarRow = randomGenerator.Next(0, (Console.WindowWidth / 2) - 1);
+            var car = new Car(newCarRow, 0, ConsoleColor.Green, '#');
+            enemyCars.Add(car);
+            return enemyCars;
+        }
+
+
+
+        public static List<Car> MoveEnemyCars(List<Car> enemyCars)
+        {
+            var newList = new List<Car>();
+            for (int i = 0; i < enemyCars.Count; i++)
+            {
+                var oldCar = enemyCars[i];
+                var newCar = new Car(oldCar.Row, oldCar.Col + 1, oldCar.Color, oldCar.Symbol);
+                newList.Add(newCar);
+            }
+
+            return newList;
         }
     }
 }

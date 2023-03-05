@@ -24,5 +24,15 @@ namespace CarDriver
                 Console.Write("||");
             }
         }
+
+        public void PrintEnemyCars(List<Car> enemyCars)
+        {
+            foreach (var car in enemyCars)
+            {
+                Console.SetCursorPosition(car.Row, car.Col);
+                Console.ForegroundColor = car.Color;
+                Console.Write(car.Symbol);
+            }
+        }
     }
 }
