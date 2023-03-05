@@ -66,7 +66,10 @@ namespace CarDriver
             {
                 var oldCar = enemyCars[i];
                 var newCar = new Car(oldCar.Row, oldCar.Col + 1, oldCar.Color, oldCar.Symbol);
-                newList.Add(newCar);
+                if (newCar.Col < Console.WindowHeight)
+                {
+                    newList.Add(newCar);
+                }
             }
 
             return newList;
