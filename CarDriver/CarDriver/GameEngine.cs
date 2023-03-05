@@ -18,9 +18,11 @@
                 this.ConsoleSettings();
                 this.viewEngine.PrintTheWall();
                 this.viewEngine.PrintSymbol(playerCar.Row, playerCar.Col, playerCar.Symbol, playerCar.Color);
+                playerCar = Controller.MovingTheCar(playerCar);
+
                 Thread.Sleep(50);
             }
-        }
+        }       
 
         private void ConsoleSettings()
         {
