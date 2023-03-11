@@ -12,6 +12,7 @@
         {
             var playerCar = new Car(Console.WindowHeight - 1, 7, ConsoleColor.Red, '@');
             var enemyCars = new List<Car>();
+            int lives = 5;
 
             while (true)
             {
@@ -22,8 +23,10 @@
                 playerCar = Controller.MovingTheCar(playerCar);
                 enemyCars = Controller.GenerateEnemyCars(enemyCars);
                 this.viewEngine.PrintEnemyCars(enemyCars);
-                var newList = Controller.MoveEnemyCars(enemyCars);
-                enemyCars = newList;
+                var newListOfEnemyCarsPlusPlayerLives = Controller.MoveEnemyCars(enemyCars, playerCar, lives);
+                enemyCars = newListOfEnemyCarsPlusPlayerLives.Item1;
+                lives = newListOfEnemyCarsPlusPlayerLives.Item2;
+                Console.WriteLine($"Lives: {lives}");
                 Thread.Sleep(500);
             }
         }       

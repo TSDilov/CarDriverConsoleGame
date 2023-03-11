@@ -59,20 +59,25 @@ namespace CarDriver
 
 
 
-        public static List<Car> MoveEnemyCars(List<Car> enemyCars)
+        public static (List<Car>, int) MoveEnemyCars(List<Car> enemyCars, Car playerCar, int lives)
         {
             var newList = new List<Car>();
             for (int i = 0; i < enemyCars.Count; i++)
             {
                 var oldCar = enemyCars[i];
                 var newCar = new Car(oldCar.Row, oldCar.Col + 1, oldCar.Color, oldCar.Symbol);
+                if (newCar.Col == playerCar.Row && newCar.Row == playerCar.Col)
+                {
+                    lives--;
+                }
+
                 if (newCar.Col < Console.WindowHeight)
                 {
                     newList.Add(newCar);
                 }
             }
 
-            return newList;
+            return (newList, lives);
         }
     }
 }
