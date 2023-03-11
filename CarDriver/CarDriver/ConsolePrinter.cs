@@ -34,5 +34,17 @@ namespace CarDriver
                 Console.Write(car.Symbol);
             }
         }
+
+        public void PrintTheGameInfo(int lives)
+        {
+            this.PrintText((Console.WindowWidth / 2) + 3, 1, "Car Driver!!!", ConsoleColor.DarkBlue);
+        }
+
+        private void PrintText(int row, int col, string text, ConsoleColor color = ConsoleColor.Gray)
+        {
+            Console.SetCursorPosition(row, col);
+            Console.ForegroundColor = color;
+            Console.WriteLine(text);
+        }
     }
 }

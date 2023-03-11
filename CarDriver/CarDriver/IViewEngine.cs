@@ -7,5 +7,7 @@
         void PrintTheWall();
 
         void PrintEnemyCars(List<Car> enemyCars);
+
+        void PrintTheGameInfo(int lives);
     }
 }

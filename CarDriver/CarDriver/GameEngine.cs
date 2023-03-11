@@ -26,14 +26,14 @@
                 var newListOfEnemyCarsPlusPlayerLives = Controller.MoveEnemyCars(enemyCars, playerCar, lives);
                 enemyCars = newListOfEnemyCarsPlusPlayerLives.Item1;
                 lives = newListOfEnemyCarsPlusPlayerLives.Item2;
-                Console.WriteLine($"Lives: {lives}");
+                this.viewEngine.PrintTheGameInfo(lives);
                 Thread.Sleep(500);
             }
         }       
 
         private void ConsoleSettings()
         {
-            Console.WindowWidth = 30;
+            Console.WindowWidth = 100;
             Console.WindowHeight = 30;
             Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
             Console.CursorVisible = false;
