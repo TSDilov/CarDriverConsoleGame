@@ -1,4 +1,6 @@
-﻿namespace CarDriver
+﻿using System.Runtime.CompilerServices;
+
+namespace CarDriver
 {
     public class GameEngine
     {
@@ -12,7 +14,9 @@
         {
             var playerCar = new Car(Console.WindowHeight - 1, 7, ConsoleColor.Red, '@');
             var enemyCars = new List<Car>();
-            int lives = 5;
+            var score = 0;
+            var lives = 5;
+            double sleepTime = 500;
 
             while (true)
             {
@@ -26,8 +30,16 @@
                 var newListOfEnemyCarsPlusPlayerLives = Controller.MoveEnemyCars(enemyCars, playerCar, lives);
                 enemyCars = newListOfEnemyCarsPlusPlayerLives.Item1;
                 lives = newListOfEnemyCarsPlusPlayerLives.Item2;
-                this.viewEngine.PrintTheGameInfo(lives);
-                Thread.Sleep(500);
+                if (lives == 0)
+                {
+                    this.viewEngine.PrintGameOver();
+                    return;
+                }
+
+                this.viewEngine.PrintTheGameInfo(lives, score);
+                sleepTime -= 0.01;
+                score++;
+                Thread.Sleep((int)sleepTime);
             }
         }       
 

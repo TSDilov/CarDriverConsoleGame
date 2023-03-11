@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +36,11 @@ namespace CarDriver
             }
         }
 
-        public void PrintTheGameInfo(int lives)
+        public void PrintTheGameInfo(int lives, int score)
         {
             this.PrintText((Console.WindowWidth / 2) + 3, 1, "Car Driver!!!", ConsoleColor.DarkBlue);
+            this.PrintText((Console.WindowWidth / 2) + 3, 3, $"Lives: {lives}", ConsoleColor.DarkBlue);
+            this.PrintText((Console.WindowWidth / 2) + 3, 5, $"Score: {score}", ConsoleColor.DarkBlue);
         }
 
         private void PrintText(int row, int col, string text, ConsoleColor color = ConsoleColor.Gray)
@@ -45,6 +48,14 @@ namespace CarDriver
             Console.SetCursorPosition(row, col);
             Console.ForegroundColor = color;
             Console.WriteLine(text);
+        }
+
+        public void PrintGameOver()
+        {
+            Console.Clear();
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.WindowHeight / 2);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("Game over!");
         }
     }
 }

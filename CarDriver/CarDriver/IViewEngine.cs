@@ -8,6 +8,7 @@
 
         void PrintEnemyCars(List<Car> enemyCars);
 
-        void PrintTheGameInfo(int lives);
+        void PrintTheGameInfo(int lives, int score);
+        void PrintGameOver();
     }
 }
