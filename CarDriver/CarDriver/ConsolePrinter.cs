@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CarDriver
-{
+{   
     public class ConsolePrinter : IViewEngine
     {
+        private const string GAME_RULES = "Avoid the cars and becom better racer!.";
+        private const string WARNING = "Be careful the enemy cars become faster!";
         public void PrintSymbol(int row, int col, char symbol, ConsoleColor color = ConsoleColor.Gray)
         {
             Console.SetCursorPosition(col, row);
@@ -41,6 +43,8 @@ namespace CarDriver
             this.PrintText((Console.WindowWidth / 2) + 3, 1, "Car Driver!!!", ConsoleColor.DarkBlue);
             this.PrintText((Console.WindowWidth / 2) + 3, 3, $"Lives: {lives}", ConsoleColor.DarkBlue);
             this.PrintText((Console.WindowWidth / 2) + 3, 5, $"Score: {score}", ConsoleColor.DarkBlue);
+            this.PrintText((Console.WindowWidth / 2) + 3, 9, GAME_RULES, ConsoleColor.DarkBlue);
+            this.PrintText((Console.WindowWidth / 2) + 3, 10, WARNING, ConsoleColor.DarkBlue);
         }
 
         private void PrintText(int row, int col, string text, ConsoleColor color = ConsoleColor.Gray)
