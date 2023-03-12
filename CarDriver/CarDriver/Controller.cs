@@ -68,10 +68,6 @@ namespace CarDriver
                 var newCar = new Car(oldCar.Row, oldCar.Col + 1, oldCar.Color, oldCar.Symbol);
                 if (newCar.Col == playerCar.Row && newCar.Row == playerCar.Col)
                 {
-                    if (lives == 0)
-                    {
-
-                    }
                     lives--;
                 }
 

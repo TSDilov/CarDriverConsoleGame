@@ -38,13 +38,17 @@ namespace CarDriver
             }
         }
 
-        public void PrintTheGameInfo(int lives, int score)
+        public void PrintTheGameInfo(int lifes, int score, bool loseLive = false)
         {
             this.PrintText((Console.WindowWidth / 2) + 3, 1, "Car Driver!!!", ConsoleColor.DarkBlue);
-            this.PrintText((Console.WindowWidth / 2) + 3, 3, $"Lives: {lives}", ConsoleColor.DarkBlue);
+            this.PrintText((Console.WindowWidth / 2) + 3, 3, $"Lifes: {lifes}", ConsoleColor.DarkBlue);
             this.PrintText((Console.WindowWidth / 2) + 3, 5, $"Score: {score}", ConsoleColor.DarkBlue);
             this.PrintText((Console.WindowWidth / 2) + 3, 9, GAME_RULES, ConsoleColor.DarkBlue);
             this.PrintText((Console.WindowWidth / 2) + 3, 10, WARNING, ConsoleColor.DarkBlue);
+            if (loseLive)
+            {
+                this.PrintText((Console.WindowWidth / 2) + 3, 12, "You lose a life", ConsoleColor.DarkBlue);
+            }
         }
 
         private void PrintText(int row, int col, string text, ConsoleColor color = ConsoleColor.Gray)

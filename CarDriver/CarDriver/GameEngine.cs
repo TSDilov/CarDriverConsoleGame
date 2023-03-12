@@ -15,7 +15,7 @@ namespace CarDriver
             var playerCar = new Car(Console.WindowHeight - 1, 7, ConsoleColor.Red, '@');
             var enemyCars = new List<Car>();
             var score = 0;
-            var lives = 5;
+            var lifes = 5;
             double sleepTime = 500;
 
             while (true)
@@ -27,16 +27,27 @@ namespace CarDriver
                 playerCar = Controller.MovingTheCar(playerCar);
                 enemyCars = Controller.GenerateEnemyCars(enemyCars);
                 this.viewEngine.PrintEnemyCars(enemyCars);
-                var newListOfEnemyCarsPlusPlayerLives = Controller.MoveEnemyCars(enemyCars, playerCar, lives);
+                var newListOfEnemyCarsPlusPlayerLives = Controller.MoveEnemyCars(enemyCars, playerCar, lifes);
                 enemyCars = newListOfEnemyCarsPlusPlayerLives.Item1;
-                lives = newListOfEnemyCarsPlusPlayerLives.Item2;
-                if (lives == 0)
+                var currentLifes = newListOfEnemyCarsPlusPlayerLives.Item2;
+                if (currentLifes == 0)
                 {
                     this.viewEngine.PrintGameOver();
                     return;
                 }
-
-                this.viewEngine.PrintTheGameInfo(lives, score);
+                else
+                {
+                    if (lifes != currentLifes)
+                    {
+                        lifes = currentLifes;
+                        this.viewEngine.PrintTheGameInfo(lifes, score, true);
+                    }
+                    else
+                    {
+                        this.viewEngine.PrintTheGameInfo(lifes, score);
+                    }
+                }
+                
                 sleepTime -= 0.01;
                 score++;
                 Thread.Sleep((int)sleepTime);
